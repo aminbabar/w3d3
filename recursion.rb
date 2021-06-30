@@ -1,3 +1,5 @@
+require "byebug"
+
 def iterative_range(start, finish)
     new_arr = []
     (start...finish).each { |i| new_arr << i }
@@ -14,18 +16,28 @@ end
 
 p rec_range(10, 20)   
 
-def exp(num, power)
+
+# first version
+def exp_1(num, power)
     return 1 if power == 0
     num * exp(num, power - 1)
 end
 
+def exp(num, power)
+    return 1 if power == 0
+    return num if power == 1
+    (power.even?) ? (exp(num, power / 2) ** 2) :  num * (exp(num, (power - 1) / 2) ** 2)
+end
+
+
 # recursion 1
-# b = 5
+num = 2
+
 # p exp(b, 0) # = 1
 # p exp(b, 3) # = b * exp(b, n - 1)
 
-# # recursion 2
-# exp(b, 0) = 1
-# exp(b, 1) = b
-# exp(b, n) = exp(b, n / 2) ** 2             [for even n]
-# exp(b, n) = b * (exp(b, (n - 1) / 2) ** 2) [for odd n]
+# recursion 2
+p exp(num, 0) #= 1
+p exp(num, 1) #= num
+p exp(num, 2) #= exp(num, n / 2) ** 2             #[for even n]
+p exp(num, 5) #= b * (exp(b, (n - 1) / 2) ** 2) #[for odd n]
