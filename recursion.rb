@@ -85,7 +85,9 @@ def binary_search(array, target)
     half = array.length / 2
     return half if array[half] == target
     if array[half] < target
-        return binary_search(array[half..-1], target) + half
+        idx = binary_search(array[half..-1], target)
+        return nil if idx == nil
+        return idx + half
     else
         return binary_search(array[0...half], target) 
     end
