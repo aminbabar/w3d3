@@ -80,7 +80,8 @@ end
 # p fibonacci(4)
 
 def binary_search(array, target)
-    return nil if array.length == 0
+    return nil if array.length == 0 || (array.length == 1 && array[0] != target)
+    # return nil if array.length == 1 && 
     half = array.length / 2
     return half if array[half] == target
     if array[half] < target
@@ -90,11 +91,12 @@ def binary_search(array, target)
     end
 end
 
-# p binary_search([1, 2, 3], 1) # => 0
-# p binary_search([2, 3, 4, 5], 3) # => 1
-# p binary_search([2, 4, 6, 8, 10], 6) # => 2
-# p binary_search([1, 3, 4, 5, 9], 5) # => 3
-# p binary_search([1, 2, 3, 4, 5, 6], 6) # => 5
-# p binary_search([1, 2, 3, 4, 5, 6], 0) # => nil
+
+p binary_search([1, 2, 3], 1) # => 0
+p binary_search([2, 3, 4, 5], 3) # => 1
+p binary_search([2, 4, 6, 8, 10], 6) # => 2
+p binary_search([1, 3, 4, 5, 9], 5) # => 3
+p binary_search([1, 2, 3, 4, 5, 6], 6) # => 5
+p binary_search([1, 2, 3, 4, 5, 6], 0) # => nil
 
 p binary_search([1, 2, 3, 4, 5, 7], 6) # => nil
